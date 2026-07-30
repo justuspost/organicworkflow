@@ -71,6 +71,7 @@ export async function onRequestPost({ request, env }) {
       [
         ["Trade", trade],
         ["City", city],
+        ["Service area", field("area") || "not given"],
         ["Years in trade", experience || "not given"],
         ["Where they are today", field("situation") || "not given"],
         ["License / certification", license || "not given"],
@@ -98,7 +99,7 @@ export async function onRequestPost({ request, env }) {
     ],
   ];
 
-  const glance = [trade, city, experience, field("timeline")]
+  const glance = [trade, field("area") || city, experience, field("timeline")]
     .filter(Boolean)
     .join("  \u00b7  ");
 
