@@ -186,6 +186,7 @@ h3 {
   font-size: var(--text-sm);
   font-weight: 700;
   letter-spacing: -0.005em;
+  white-space: nowrap;
   transition: transform 0.25s var(--ease), background-color 0.25s var(--ease),
     border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), color 0.25s var(--ease);
 }
@@ -335,14 +336,14 @@ h3 {
   font-family: var(--font-body);
   font-size: 0.6875rem;
   font-weight: 600;
-  letter-spacing: 0.11em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
 .nav {
   display: flex;
   align-items: center;
-  gap: clamp(var(--space-4), 2vw, var(--space-8));
+  gap: clamp(var(--space-3), 1.6vw, var(--space-6));
 }
 .nav a {
   font-size: var(--text-sm);
@@ -397,7 +398,7 @@ h3 {
 .nav-toggle {
   display: none;
 }
-@media (max-width: 900px) {
+@media (max-width: 1080px) {
   .nav .nav__cta {
     display: block;
     margin-top: var(--space-5);
@@ -1227,7 +1228,7 @@ h3 {
 .mobile-cta[data-show="true"] {
   transform: translateY(0);
 }
-@media (max-width: 900px) {
+@media (max-width: 1080px) {
   .mobile-cta {
     display: block;
   }
@@ -1238,4 +1239,47 @@ h3 {
   }
 }
 
-/* build-marker: v6 */
+/* ================= two ways in ================= */
+.paths {
+  margin-top: clamp(var(--space-12), 6vw, var(--space-20));
+  padding-top: clamp(var(--space-10), 5vw, var(--space-16));
+  border-top: 1px solid var(--color-border);
+}
+.paths__head {
+  max-width: 56ch;
+  margin-bottom: clamp(var(--space-8), 4vw, var(--space-12));
+}
+.paths__head h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-4);
+}
+.paths__head p {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+.paths__grid {
+  display: grid;
+  gap: var(--space-5);
+}
+@media (min-width: 820px) {
+  .paths__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.paths__grid .card h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-4);
+}
+.paths__fit {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px dashed var(--color-border);
+  font-size: var(--text-xs) !important;
+  font-weight: 600;
+  color: var(--color-accent) !important;
+}
+
+/* build-marker: v7 */
