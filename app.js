@@ -69,12 +69,6 @@
     });
   }
 
-  /* ---------- duplicate trades marquee for seamless loop ---------- */
-  var track = document.getElementById("strip-track");
-  if (track) {
-    track.innerHTML = track.innerHTML + track.innerHTML;
-  }
-
   /* ---------- footer year ---------- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
