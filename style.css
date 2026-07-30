@@ -505,17 +505,17 @@ h3 {
 }
 .hero__badge {
   position: absolute;
-  bottom: calc(-1 * var(--space-5));
-  left: calc(-1 * var(--space-4));
+  bottom: calc(-1 * var(--space-8));
+  left: calc(-1 * var(--space-6));
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  padding: var(--space-4) var(--space-5);
+  padding: var(--space-3) var(--space-5);
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-md);
-  max-width: 17rem;
+  max-width: 15rem;
 }
 .hero__badge strong {
   display: block;
