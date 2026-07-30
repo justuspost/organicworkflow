@@ -1207,4 +1207,35 @@ h3 {
   }
 }
 
-/* build-marker: v5 */
+/* ================= mobile sticky CTA ================= */
+.mobile-cta {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 55;
+  display: none;
+  padding: var(--space-3) var(--gutter) calc(var(--space-3) + env(safe-area-inset-bottom));
+  background: color-mix(in oklab, var(--color-bg) 88%, transparent);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid var(--color-border);
+  transform: translateY(110%);
+  transition: transform 0.4s var(--ease);
+}
+.mobile-cta .btn {
+  width: 100%;
+  min-height: 50px;
+}
+.mobile-cta[data-show="true"] {
+  transform: translateY(0);
+}
+@media (max-width: 900px) {
+  .mobile-cta {
+    display: block;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-cta {
+    transition: none;
+  }
+}
+
+/* build-marker: v6 */

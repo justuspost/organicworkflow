@@ -69,6 +69,34 @@
     });
   }
 
+  /* ---------- mobile sticky CTA: show after hero, hide over the form ---------- */
+  var mcta = document.getElementById("mobile-cta");
+  var applySection = document.getElementById("apply");
+  if (mcta && applySection && "IntersectionObserver" in window) {
+    var hero = document.getElementById("top");
+    var pastHero = false;
+    var overForm = false;
+    var sync = function () {
+      var show = pastHero && !overForm;
+      mcta.setAttribute("data-show", show ? "true" : "false");
+      mcta.setAttribute("aria-hidden", show ? "false" : "true");
+    };
+    new IntersectionObserver(
+      function (e) {
+        pastHero = !e[0].isIntersecting;
+        sync();
+      },
+      { threshold: 0 }
+    ).observe(hero);
+    new IntersectionObserver(
+      function (e) {
+        overForm = e[0].isIntersecting;
+        sync();
+      },
+      { threshold: 0 }
+    ).observe(applySection);
+  }
+
   /* ---------- footer year ---------- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
