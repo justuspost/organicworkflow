@@ -39,7 +39,7 @@ export async function onRequestPost({ request, env }) {
   const license = field("license");
   const message = field("message");
 
-  if (!name || !email || !phone || !city || !trade || !experience || !license) {
+  if (!name || !email || !phone || !city || !trade) {
     return json({ error: "Missing required fields." }, 400);
   }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
@@ -61,8 +61,8 @@ export async function onRequestPost({ request, env }) {
     ["Phone", phone],
     ["City", city],
     ["Trade", trade],
-    ["Years in trade", experience],
-    ["License / certification", license],
+    ["Years in trade", experience || "not given"],
+    ["License / certification", license || "not given"],
     ["Goals", message || "—"],
     ["Submitted from", field("page") || "organicworkflow.com"],
   ];
@@ -71,7 +71,7 @@ export async function onRequestPost({ request, env }) {
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:620px;margin:0 auto;background:#fff;border:1px solid #dde4f0;border-radius:14px;overflow:hidden">
     <tr><td style="background:#3560b8;padding:20px 26px;color:#fff">
       <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.82">Organic Workflow</div>
-      <div style="font-size:20px;font-weight:700;margin-top:4px">New partner application</div>
+      <div style="font-size:20px;font-weight:700;margin-top:4px">New partner inquiry</div>
     </td></tr>
     <tr><td style="padding:24px 26px">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;line-height:1.5">
@@ -103,7 +103,7 @@ export async function onRequestPost({ request, env }) {
         from,
         to: [to],
         reply_to: email,
-        subject: `New partner application — ${name} (${trade}, ${city})`,
+        subject: `New partner inquiry — ${name} (${trade}, ${city})`,
         html,
         text,
       }),

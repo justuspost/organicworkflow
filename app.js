@@ -91,7 +91,7 @@
       if (!form.checkValidity()) {
         setStatus(
           "error",
-          "Please complete the required fields — name, phone, email, city, trade, experience, license and consent."
+          "Please fill in your name, phone, email, city and trade, and check the consent box."
         );
         var firstInvalid = form.querySelector(":invalid");
         if (firstInvalid) firstInvalid.focus();
@@ -129,18 +129,18 @@
           form.reset();
           setStatus(
             "ok",
-            "<strong>Application received.</strong> Thanks for reaching out — we review every application personally and will follow up within two business days."
+            "<strong>Got it.</strong> Thanks for reaching out — this went straight to the owner's inbox. Expect to hear back from a person within two business days."
           );
         })
         .catch(function () {
           setStatus(
             "error",
-            'Something went wrong sending your application. Please email us directly at <a href="mailto:justus@organicworkflow.com">justus@organicworkflow.com</a> and we will pick it up from there.'
+            'Something went wrong sending that. Please email us directly at <a href="mailto:justus@organicworkflow.com">justus@organicworkflow.com</a> and we will pick it up from there.'
           );
         })
         .then(function () {
           submitBtn.removeAttribute("data-busy");
-          submitBtn.textContent = "Send my application";
+          submitBtn.textContent = "Start the conversation";
         });
     });
   }
