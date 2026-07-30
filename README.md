@@ -4,6 +4,8 @@ Marketing site for **Organic Workflow**, which partners with licensed trades pro
 to be their own boss. The tradesperson brings the craft and the license; Organic Workflow prices
 jobs, runs marketing, closes work, hires crews, and manages the business side.
 
+Market: **Tulsa and northeastern Oklahoma only.**
+
 Production domain: **organicworkflow.com** (Cloudflare Pages)
 
 ---
@@ -92,7 +94,7 @@ Cloudflare creates the DNS records automatically when the zone is in the same ac
 | `name`       | yes      |                                    |
 | `email`      | yes      | validated; used as `reply_to`      |
 | `phone`      | yes      |                                    |
-| `city`       | yes      | city / market                      |
+| `city`       | yes      | city the applicant would work      |
 | `trade`      | yes      |                                    |
 | `experience` | yes      | years in the trade                 |
 | `license`    | yes      | license or certification           |

@@ -59,7 +59,7 @@ export async function onRequestPost({ request, env }) {
     ["Name", name],
     ["Email", email],
     ["Phone", phone],
-    ["City / market", city],
+    ["City", city],
     ["Trade", trade],
     ["Years in trade", experience],
     ["License / certification", license],

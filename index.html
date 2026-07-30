@@ -6,7 +6,7 @@
     <title>Organic Workflow — Be Your Own Boss. We Run the Business.</title>
     <meta
       name="description"
-      content="Organic Workflow partners with licensed tradespeople in Tulsa and across Oklahoma. You bring the craft and the license. We price the jobs, run the marketing, close the calls, hire the crew, and handle the back office."
+      content="Organic Workflow partners with licensed tradespeople in Tulsa and northeastern Oklahoma. You bring the craft and the license. We price the jobs, run the marketing, close the calls, hire the crew, and handle the back office."
     />
     <meta name="theme-color" content="#3560b8" />
     <link rel="canonical" href="https://organicworkflow.com/" />
@@ -16,7 +16,7 @@
     <meta property="og:title" content="Be Your Own Boss. We Run the Business." />
     <meta
       property="og:description"
-      content="Licensed trades partner program in Tulsa, Oklahoma. You own the craft. Organic Workflow prices, markets, closes, hires, and manages the business side."
+      content="Licensed trades partner program serving Tulsa and northeastern Oklahoma. You own the craft. Organic Workflow prices, markets, closes, hires, and manages the business side."
     />
     <meta property="og:url" content="https://organicworkflow.com/" />
     <meta property="og:image" content="https://organicworkflow.com/assets/hero-tradesman.jpg" />
@@ -42,7 +42,12 @@
         "url": "https://organicworkflow.com",
         "email": "justus@organicworkflow.com",
         "description": "Organic Workflow partners with licensed trades professionals who want to be their own boss. The tradesperson brings the craft; Organic Workflow prices jobs, runs marketing, closes work, hires, and manages the business side.",
-        "areaServed": { "@type": "State", "name": "Oklahoma" },
+        "areaServed": {
+          "@type": "GeoCircle",
+          "name": "Tulsa metro and northeastern Oklahoma",
+          "geoMidpoint": { "@type": "GeoCoordinates", "latitude": 36.154, "longitude": -95.9928 },
+          "geoRadius": "80000"
+        },
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Tulsa",
@@ -160,7 +165,7 @@
         <div class="wrap">
           <div class="hero__grid">
             <div>
-              <p class="eyebrow">Tulsa &amp; Greater Oklahoma</p>
+              <p class="eyebrow">Tulsa &amp; Northeastern Oklahoma</p>
               <h1>You mastered the trade.<br /><em>We'll run the business.</em></h1>
               <p class="hero__lede">
                 Organic Workflow partners with licensed tradespeople who are ready to be their own
@@ -198,8 +203,8 @@
                   <circle cx="12" cy="10.4" r="2.6" stroke="currentColor" stroke-width="2" />
                 </svg>
                 <div>
-                  <strong>4 states</strong>
-                  <span>Partner territory across Oklahoma, Arkansas, Kansas and Missouri.</span>
+                  <strong>Tulsa metro</strong>
+                  <span>Partner territory across northeastern Oklahoma. Local operators only.</span>
                 </div>
               </div>
             </div>
@@ -514,8 +519,8 @@
               <p class="eyebrow">Who We Want</p>
               <h2>Certified, proud of the work, and done building someone else's company.</h2>
               <p class="lede">
-                We're selective on purpose — one partner per trade, per market. If this sounds like
-                you, we should talk.
+                We're selective on purpose — one partner per trade across the Tulsa area. If this
+                sounds like you, we should talk.
               </p>
               <ul class="checklist">
                 <li>
@@ -654,8 +659,9 @@
                 <p>
                   Any licensed or certified residential and light-commercial trade: HVAC, plumbing,
                   electrical, roofing, garage doors, appliance repair, concrete, landscaping and
-                  more. We're based in Tulsa and focused on Oklahoma first, with partner territory
-                  open across Arkansas, Kansas and Missouri.
+                  more. We're based in Tulsa and we work northeastern Oklahoma only — the Tulsa
+                  metro and the surrounding communities. We'd rather own one region properly than
+                  spread thin across a map.
                 </p>
               </div>
             </details>
@@ -710,7 +716,7 @@
                     <path d="M12 21s7-5.4 7-10.4A7 7 0 0 0 5 10.6C5 15.6 12 21 12 21Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
                     <circle cx="12" cy="10.4" r="2.6" stroke="currentColor" stroke-width="2" />
                   </svg>
-                  <span>Based in Tulsa, Oklahoma. Partner territory across OK, AR, KS and MO.</span>
+                  <span>Based in Tulsa. Partner territory across northeastern Oklahoma.</span>
                 </li>
               </ul>
             </aside>
@@ -732,7 +738,7 @@
                   <input id="email" name="email" type="email" autocomplete="email" required />
                 </div>
                 <div class="field">
-                  <label for="city">City / market</label>
+                  <label for="city">City you'd work</label>
                   <input id="city" name="city" type="text" placeholder="Tulsa, OK" required />
                 </div>
               </div>
@@ -804,8 +810,8 @@
 
               <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
               <p class="form__note">
-                Applications go straight to justus@organicworkflow.com. One partner per trade, per
-                market.
+                Applications go straight to justus@organicworkflow.com. One partner per trade in the
+                Tulsa area.
               </p>
             </form>
           </div>
@@ -832,8 +838,8 @@
               <span class="brand__name">Organic Workflow<span>Trades Partner Program</span></span>
             </a>
             <p>
-              We build the business around great tradespeople. Tulsa, Oklahoma — serving partners
-              across OK, AR, KS and MO.
+              We build the business around great tradespeople. Based in Tulsa, serving partners
+              across northeastern Oklahoma.
             </p>
           </div>
           <nav class="footer__links" aria-label="Footer">
