@@ -114,3 +114,7 @@ All copy lives in `index.html`. Common edits:
 - **FAQ** — `<details>` elements in `#faq`
 - **Brand colors** — the `:root` and `[data-theme="dark"]` blocks at the top of `style.css`
 - **Cloud speed** — the `drift` animation durations on `.sky__band--far|mid|near` in `style.css`
+
+---
+
+Live: https://organicworkflow.com (Cloudflare Pages, Git-connected to `main`)
