@@ -55,42 +55,87 @@ export async function onRequestPost({ request, env }) {
   const to = env.LEAD_TO || "justus@organicworkflow.com";
   const from = env.LEAD_FROM || "Organic Workflow <apply@organicworkflow.com>";
 
-  const rows = [
-    ["Name", name],
-    ["Email", email],
-    ["Phone", phone],
-    ["City", city],
-    ["Trade", trade],
-    ["Years in trade", experience || "not given"],
-    ["License / certification", license || "not given"],
-    ["Goals", message || "—"],
-    ["Submitted from", field("page") || "organicworkflow.com"],
+  const groups = [
+    [
+      "Contact",
+      [
+        ["Name", name],
+        ["Phone", phone],
+        ["Email", email],
+        ["Best way to reach", field("contact_method") || "no preference"],
+        ["Best time", field("best_time") || "anytime"],
+      ],
+    ],
+    [
+      "Background",
+      [
+        ["Trade", trade],
+        ["City", city],
+        ["Years in trade", experience || "not given"],
+        ["Where they are today", field("situation") || "not given"],
+        ["License / certification", license || "not given"],
+        ["Work they prefer", field("work_type") || "not given"],
+        ["Truck and tools", field("equipment") || "not given"],
+      ],
+    ],
+    [
+      "Deal shape",
+      [
+        ["Income they need", field("income") || "not given"],
+        ["Timeline to start", field("timeline") || "not given"],
+        ["How big they would build", field("ambition") || "not given"],
+        ["Customers they would bring", field("customers") || "not given"],
+        ["Non-compete", field("noncompete") || "not given"],
+      ],
+    ],
+    [
+      "Notes",
+      [
+        ["In their words", message || "not given"],
+        ["How they heard about us", field("referral") || "not given"],
+        ["Submitted from", field("page") || "organicworkflow.com"],
+      ],
+    ],
   ];
 
+  const glance = [trade, city, experience, field("timeline")]
+    .filter(Boolean)
+    .join("  \u00b7  ");
+
+  const rowHtml = (k, v) =>
+    `<tr><td style="padding:8px 0;border-bottom:1px solid #eef1f7;color:#66718c;width:190px;vertical-align:top">${esc(
+      k
+    )}</td><td style="padding:8px 0;border-bottom:1px solid #eef1f7;font-weight:600;vertical-align:top">${esc(
+      v
+    ).replace(/\n/g, "<br>")}</td></tr>`;
+
+  const groupHtml = (title, rows) =>
+    `<div style="margin-top:22px;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#8792ab;font-weight:700">${esc(
+      title
+    )}</div>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;line-height:1.5;margin-top:6px">
+        ${rows.map(([k, v]) => rowHtml(k, v)).join("")}
+      </table>`;
+
   const html = `<!doctype html><html><body style="margin:0;background:#f2f5fa;padding:28px 16px;font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;color:#26314a">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:620px;margin:0 auto;background:#fff;border:1px solid #dde4f0;border-radius:14px;overflow:hidden">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:640px;margin:0 auto;background:#fff;border:1px solid #dde4f0;border-radius:14px;overflow:hidden">
     <tr><td style="background:#3560b8;padding:20px 26px;color:#fff">
       <div style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;opacity:.82">Organic Workflow</div>
       <div style="font-size:20px;font-weight:700;margin-top:4px">New partner inquiry</div>
+      <div style="font-size:13px;margin-top:8px;opacity:.92">${esc(glance)}</div>
     </td></tr>
-    <tr><td style="padding:24px 26px">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;line-height:1.5">
-        ${rows
-          .map(
-            ([k, v]) =>
-              `<tr><td style="padding:9px 0;border-bottom:1px solid #eef1f7;color:#66718c;width:180px;vertical-align:top">${esc(
-                k
-              )}</td><td style="padding:9px 0;border-bottom:1px solid #eef1f7;font-weight:600;vertical-align:top">${esc(
-                v
-              ).replace(/\n/g, "<br>")}</td></tr>`
-          )
-          .join("")}
-      </table>
-      <p style="margin:22px 0 0;font-size:13px;color:#66718c">Reply directly to this email to reach the applicant.</p>
+    <tr><td style="padding:6px 26px 26px">
+      ${groups.map(([title, rows]) => groupHtml(title, rows)).join("")}
+      <p style="margin:24px 0 0;font-size:13px;color:#66718c">Reply directly to this email to reach them. Anything marked &ldquo;not given&rdquo; was an optional field they left blank.</p>
     </td></tr>
   </table></body></html>`;
 
-  const text = rows.map(([k, v]) => `${k}: ${v}`).join("\n");
+  const text = groups
+    .map(
+      ([title, rows]) =>
+        `== ${title} ==\n` + rows.map(([k, v]) => `${k}: ${v}`).join("\n")
+    )
+    .join("\n\n");
 
   try {
     const res = await fetch("https://api.resend.com/emails", {
@@ -103,7 +148,7 @@ export async function onRequestPost({ request, env }) {
         from,
         to: [to],
         reply_to: email,
-        subject: `New partner inquiry — ${name} (${trade}, ${city})`,
+        subject: `New partner inquiry — ${name} · ${trade} · ${city}`,
         html,
         text,
       }),
