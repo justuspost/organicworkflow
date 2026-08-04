@@ -1431,4 +1431,18 @@ h3 {
   color: var(--color-text-muted);
 }
 
-/* build-marker: v12 */
+.cards--exec {
+  grid-template-columns: 1fr;
+}
+@media (min-width: 780px) {
+  .cards--exec {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.cards--exec .card h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  letter-spacing: -0.02em;
+}
+
+/* build-marker: v13 */
